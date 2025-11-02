@@ -28,9 +28,9 @@ struct context foo_context;
 struct context bar_context;
 struct context baz_context;
 
-#define STACK_DEPTH 512
-uint64 bar_stack[STACK_DEPTH];
-uint64 baz_stack[STACK_DEPTH];
+#define STACK_SIZE 4096
+uint8 bar_stack[STACK_SIZE] __attribute__((aligned(16)));
+uint8 baz_stack[STACK_SIZE] __attribute__((aligned(16)));
 
 void foo() {
   uint64 c = 0;
@@ -62,9 +62,9 @@ void baz() {
 int main() {
     // setting up initial contexts
     bar_context.ra = (uint64)bar;
-    bar_context.sp = (uint64)(bar_stack + STACK_DEPTH);
+    bar_context.sp = (uint64)(bar_stack + STACK_SIZE);
     baz_context.ra = (uint64)baz;
-    baz_context.sp = (uint64)(baz_stack + STACK_DEPTH);
+    baz_context.sp = (uint64)(baz_stack + STACK_SIZE);
     // start from foo
     foo();
     return 0;
