@@ -48,3 +48,11 @@ int uthread_gettid(void) {
   // TODO: Replace this comment with your code.
   return -1; // This line should also be replaced with your code.
 }
+
+void uthread_acquire(int *locked) {
+  // TODO: Replace this comment with your code.
+}
+
+void uthread_release(int *locked) {
+  // TODO: Replace this comment with your code.
+}
