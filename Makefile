@@ -126,6 +126,11 @@ $U/_uthread_test: $U/uthread_test.o $(ULIB) $U/uthread.o $K/swtch.o $U/user.ld
 	$(OBJDUMP) -S $@ > $*.asm
 	$(OBJDUMP) -t $@ | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$$/d' > $*.sym
 
+$U/_uthread_sync: $U/uthread_sync.o $(ULIB) $U/uthread.o $K/swtch.o $U/user.ld
+	$(LD) $(LDFLAGS) -T $U/user.ld -o $@ $< $(ULIB) $U/uthread.o $K/swtch.o
+	$(OBJDUMP) -S $@ > $*.asm
+	$(OBJDUMP) -t $@ | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$$/d' > $*.sym
+
 mkfs/mkfs: mkfs/mkfs.c $K/fs.h $K/param.h
 	gcc -Wno-unknown-attributes -I. -o mkfs/mkfs mkfs/mkfs.c
 
@@ -157,6 +162,7 @@ UPROGS=\
 	$U/_dorphan\
 	$U/_swtest\
 	$U/_uthread_test\
+	$U/_uthread_sync\
 
 fs.img: mkfs/mkfs README $(UPROGS)
 	mkfs/mkfs fs.img README $(UPROGS)
