@@ -115,21 +115,18 @@ $U/_forktest: $U/forktest.o $(ULIB)
 
 $U/_swtest: $U/swtest.o $(ULIB) $K/swtch.o
 	$(LD) $(LDFLAGS) -T $U/user.ld -o $@ $^
-	$(OBJDUMP) -S $@ > $*.asm
-	$(OBJDUMP) -t $@ | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$$/d' > $*.sym
+	$(OBJDUMP) -S $U/_swtest > $U/swtest.asm
 
 $U/uthread.o: $U/uthread.c $U/uthread.h
 	$(CC) $(CFLAGS) -c -o $U/uthread.o $<
 
 $U/_uthread_test: $U/uthread_test.o $(ULIB) $U/uthread.o $K/swtch.o $U/user.ld
 	$(LD) $(LDFLAGS) -T $U/user.ld -o $@ $< $(ULIB) $U/uthread.o $K/swtch.o
-	$(OBJDUMP) -S $@ > $*.asm
-	$(OBJDUMP) -t $@ | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$$/d' > $*.sym
+	$(OBJDUMP) -S $U/_uthread_test > $U/uthread_test.asm
 
 $U/_uthread_sync: $U/uthread_sync.o $(ULIB) $U/uthread.o $K/swtch.o $U/user.ld
 	$(LD) $(LDFLAGS) -T $U/user.ld -o $@ $< $(ULIB) $U/uthread.o $K/swtch.o
-	$(OBJDUMP) -S $@ > $*.asm
-	$(OBJDUMP) -t $@ | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$$/d' > $*.sym
+	$(OBJDUMP) -S $U/_uthread_sync > $U/uthread_sync.asm
 
 mkfs/mkfs: mkfs/mkfs.c $K/fs.h $K/param.h
 	gcc -Wno-unknown-attributes -I. -o mkfs/mkfs mkfs/mkfs.c
