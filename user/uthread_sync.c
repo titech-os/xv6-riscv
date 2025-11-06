@@ -25,7 +25,7 @@ void spin_random_wait(void) {
 int locked = 0;
 int cs_count = 0;
 
-void fun() {
+void fun(void) {
   printf("thread %d started\n", uthread_gettid());
   for (int i = 0; i < 10; i++) {
     spin_random_wait();  // NC
@@ -42,7 +42,7 @@ void fun() {
   uthread_exit();
 }
 
-int main() {
+int main(void) {
   randx = uptime();
   uthread_add(fun, foo_stack, STACK_SIZE);
   uthread_add(fun, bar_stack, STACK_SIZE);
