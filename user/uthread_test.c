@@ -9,7 +9,7 @@ uint8 foo_stack[STACK_SIZE] __attribute__((aligned(16)));
 uint8 bar_stack[STACK_SIZE] __attribute__((aligned(16)));
 uint8 baz_stack[STACK_SIZE] __attribute__((aligned(16)));
 
-void foo() {
+void foo(void) {
     int c = 0;
     for (int i = 0; i < 7; i++) {
         printf("foo (tid=%d): %d\n", uthread_gettid(), c);
@@ -44,7 +44,7 @@ void baz(void) {
     uthread_exit();
 }
 
-int main() {
+int main(void) {
   uthread_add(foo, foo_stack, STACK_SIZE);
   uthread_add(bar, bar_stack, STACK_SIZE);
   uthread_add(baz, baz_stack, STACK_SIZE);
