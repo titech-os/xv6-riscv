@@ -143,6 +143,9 @@ void            trapinithart(void);
 extern struct spinlock tickslock;
 void            prepare_return(void);
 
+// sysdate.c
+void            rtcinit(void);
+
 // uart.c
 void            uartinit(void);
 void            uartintr(void);
