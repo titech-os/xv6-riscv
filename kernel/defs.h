@@ -145,6 +145,7 @@ void            prepare_return(void);
 
 // sysdate.c
 void            rtcinit(void);
+void            rtcintr(void);
 
 // uart.c
 void            uartinit(void);

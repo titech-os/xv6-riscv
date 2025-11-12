@@ -19,6 +19,7 @@
 
 // Goldfish RTC
 #define RTC0 0x101000L
+#define RTC0_IRQ 11
 
 // qemu puts UART registers here in physical memory.
 #define UART0 0x10000000L
