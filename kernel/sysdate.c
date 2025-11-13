@@ -34,7 +34,7 @@ rtcintr(void)
 {
   WriteReg(CLEAR_INTERRUPT, 1);
   WriteReg(IRQ_ENABLED, 0);
-  printf("RTC interrupt\n");
+  printf("RTC alarm!\n");
 }
 
 uint64

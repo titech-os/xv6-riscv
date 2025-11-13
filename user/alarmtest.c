@@ -3,12 +3,12 @@
 #include "user/user.h"
 
 int
-main()
+main(int argc, char *argv[])
 {
-  uint64 t = gettimeofday();
-  // printf("t: %ld\n", t);
-  t = t + 20;
-  // printf("t: %ld\n", t);
-  setalarm(t);
+  if (argc != 2) {
+    fprintf(2, "usage: %s sec\n", argv[0]);
+    exit(1);
+  }
+  setalarm(gettimeofday() + atoi(argv[1]));
   exit(0);
 }
