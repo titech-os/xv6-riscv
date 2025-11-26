@@ -42,4 +42,5 @@ entry("getpid");
 entry("sbrk");
 entry("pause");
 entry("uptime");
+entry("mkfifo");
 entry("lseek");

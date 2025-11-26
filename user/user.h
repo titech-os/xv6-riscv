@@ -24,6 +24,7 @@ int getpid(void);
 char* sys_sbrk(int,int);
 int pause(int);
 int uptime(void);
+int mkfifo(char *);
 int lseek(int, int, int);
 
 // ulib.c
