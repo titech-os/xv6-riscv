@@ -503,3 +503,13 @@ sys_pipe(void)
   }
   return 0;
 }
+
+uint64
+sys_mkfifo(void)
+{
+  // fill with your code
+  // return value:
+  //    0: successfully created a fifo
+  //   -1: an error occurred
+  return -1;
+}
