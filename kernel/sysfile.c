@@ -503,3 +503,14 @@ sys_pipe(void)
   }
   return 0;
 }
+
+uint64
+sys_lseek(void)
+{
+  // fill with your code
+  // return values:
+  //  * successful completion, resulting offset location
+  //    as measured in bytes from the beginning of the file. 
+  //  * Otherwise, -1 is returned
+  return -1;
+}
