@@ -13,14 +13,14 @@ main(int argc, char *argv[])
     exit(1);
   }
   else if (cp == 0) {
-    exec("fifotest_p", av);
+    exec("fifotestp", av);
   }
   if ((cc = fork()) <  0) {
     fprintf(2, "fork failed\n");
     exit(1);
   }
   else if (cc == 0) {
-    exec("fifotest_c", av);
+    exec("fifotestc", av);
   }
   wait(0);
   wait(0);
